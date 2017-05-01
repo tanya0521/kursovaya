@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b E name:
+  = @exhibit.e_name
+%p
+  %b Description e:
+  = @exhibit.description_e
+%p
+  %b I value:
+  = @exhibit.i_value
+%p
+  %b Age:
+  = @exhibit.age
+%p
+  %b Size:
+  = @exhibit.size
+%p
+  %b Condition:
+  = @exhibit.condition
+%p
+  %b Collection:
+  = @exhibit.collection
+
+= link_to 'Edit', edit_exhibit_path(@exhibit)
+\|
+= link_to 'Back', exhibits_path
