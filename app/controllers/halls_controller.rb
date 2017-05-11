@@ -69,6 +69,6 @@ class HallsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hall_params
-      params.require(:hall).permit(:name)
+      params.require(:hall).permit(:name, :collection_id)
     end
 end
