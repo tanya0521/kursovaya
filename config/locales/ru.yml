@@ -16,7 +16,7 @@ ru:
     confirm:
       user: Действительно удалить пользователя?
       role: Действительно удалить роль?
-    new: 
+    new:
       user: Новый пользователь
       role: Новая роль
   headers:
@@ -49,7 +49,7 @@ ru:
         activation_token_expires_at: Дата прекращения действия токена активации
         last_login_at: Время последнего входа в систему
         role_users: Роли
-      role: 
+      role:
         name: Обозначение
         info: Краткое название
         full_info: Описание
@@ -63,4 +63,33 @@ ru:
       user/role_users:
         <<: *role_users
       # nested_finish
-          
+
+    models:
+      hall: Выстовочный зал
+      collection: Коллекция
+      exhibit: Экспонат
+    attributes:
+      hall:
+        name: Название
+        collection: Коллекция
+      collection:
+        c_name: Название
+        description: Краткое описание
+        date_begin: Дата начала
+        date_end: Дата конца
+        hall: Выстовочный зал
+      exhibit:
+        e_name: Название
+        description_e: Краткое описание
+        i_value: Стоимость
+        age: Век
+        size: Размер
+        condition: Условия содержания
+        collection: Коллекция
+
+    errors:
+      models:
+        person:
+          attributes:
+            snils:
+              check_sum: имеет неправильную контрольную сумму

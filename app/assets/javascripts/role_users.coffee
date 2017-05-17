@@ -21,13 +21,13 @@
     # Вставляем на страницу
     $(this).parent().parent().after(content)
     panel = $(this).parent().parent().parent().find('.panel-info').first()
-    # Если бы были даты с datepicker-ом 
+    # Если бы были даты с datepicker-ом
     # window.datepicker_activation_by_item(panel)
     # Включаем у новой роли кнопку удаления
     # Её раньше не было, поэтому при зарузке страницы она не включалась
     panel.find('a.remove_role').on 'click', ->
       window.delete_one_ru($(this))
-      false    
+      false
     false
 # Запуск всего вышеописанного
 ru_ready = ->

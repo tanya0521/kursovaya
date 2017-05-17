@@ -16,6 +16,15 @@ ActiveRecord::Schema.define(version: 20170501085108) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "collections", force: :cascade do |t|
+    t.text     "c_name",      null: false
+    t.text     "description", null: false
+    t.date     "date_begin",  null: false
+    t.date     "date_end",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -31,6 +40,29 @@ ActiveRecord::Schema.define(version: 20170501085108) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "exhibits", force: :cascade do |t|
+    t.text     "e_name",        null: false
+    t.text     "description_e", null: false
+    t.integer  "i_value",       null: false
+    t.integer  "age",           null: false
+    t.string   "size",          null: false
+    t.text     "condition",     null: false
+    t.integer  "collection_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "exhibits", ["collection_id"], name: "index_exhibits_on_collection_id", using: :btree
+
+  create_table "halls", force: :cascade do |t|
+    t.text     "name",          null: false
+    t.integer  "collection_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "halls", ["collection_id"], name: "index_halls_on_collection_id", using: :btree
 
   create_table "role_users", force: :cascade do |t|
     t.integer  "role_id",    null: false
@@ -96,6 +128,8 @@ ActiveRecord::Schema.define(version: 20170501085108) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+  add_foreign_key "exhibits", "collections"
+  add_foreign_key "halls", "collections"
   add_foreign_key "role_users", "roles"
   add_foreign_key "role_users", "users"
 end
