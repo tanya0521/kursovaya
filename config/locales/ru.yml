@@ -4,6 +4,7 @@ ru:
     company:
       short_name: МПУ
       department: Кафедра
+<<<<<<< HEAD
     users:
       index: Список пользователей
       new-button: Новый пользователь 
@@ -14,13 +15,37 @@ ru:
       new-button: Новая роль
       edit: Редактирование роли
       new: Создание роли
+=======
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
   helpers:
     submit:
       create: Сохранить
       submit: Сохранить
       update: Сохранить
+<<<<<<< HEAD
     sure: Действительно удалить?      
   
+=======
+  buttons:
+    edit: Редактировать
+    destroy: Удалить
+    show: Показать
+    confirm:
+      user: Действительно удалить пользователя?
+      role: Действительно удалить роль?
+    new: 
+      user: Новый пользователь
+      role: Новая роль
+  headers:
+    users:
+      edit: Редактирование пользователя
+      new: Новый пользователь
+      index: Список пользователей
+    roles:
+      index: Список возможных ролей пользователей
+      edit: Редактирование роли
+      new: Новая роль
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
   views:
     pagination:
       first: ⇤
@@ -34,6 +59,10 @@ ru:
     attributes:
       user:
         email: Пользовательское имя/электронная почта
+<<<<<<< HEAD
+=======
+        birthday: Дата рождения
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
         password: Пароль
         password_confirmation: Подтверждение пароля
         reset_password_email_sent_at: Дата отправления письма для смены пароля
@@ -41,6 +70,7 @@ ru:
         activation_token_expires_at: Дата прекращения действия токена активации
         last_login_at: Время последнего входа в систему
         role_users: Роли
+<<<<<<< HEAD
       role:
         name: Обозначение
         info: Краткое название
@@ -78,4 +108,20 @@ ru:
 
 
 
+=======
+      role: 
+        name: Обозначение
+        info: Краткое название
+        full_info: Описание
+      # nested_start
+      role_user: &role_users
+      # nested_finish
+        role: Роль
+        role_id: Роль
+        data: Параметры
+      # nested_start
+      user/role_users:
+        <<: *role_users
+      # nested_finish
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
           

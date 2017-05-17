@@ -10,6 +10,10 @@ if (u2 = User.find_by_email('user@localhost')).nil?
 end
 r1, r2 = Role.create_main_roles
 ru1 = RoleUser.create(role: r1, user: u1)
+<<<<<<< HEAD
 ru2 = RoleUser.create(role: r2, user: u2)
 
 Collection.destroy_all; Hall.destroy_all; Exhibit.destroy_all
+=======
+ru2 = RoleUser.create(role: r2, user: u2)
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7

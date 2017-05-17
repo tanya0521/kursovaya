@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   resources :exhibits
   resources :collections
   resources :halls
+=======
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
   resources :role_users
   resources :roles
   resources :password_resets

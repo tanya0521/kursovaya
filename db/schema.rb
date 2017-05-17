@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170514150445) do
+=======
+ActiveRecord::Schema.define(version: 20170501085108) do
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "actors", force: :cascade do |t|
     t.text     "l_name",     null: false
     t.text     "f_name",     null: false
@@ -53,6 +58,8 @@ ActiveRecord::Schema.define(version: 20170514150445) do
     t.datetime "updated_at",  null: false
   end
 
+=======
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -69,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170514150445) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+<<<<<<< HEAD
   create_table "exhibits", force: :cascade do |t|
     t.text     "e_name",        null: false
     t.text     "description_e", null: false
@@ -114,6 +122,8 @@ ActiveRecord::Schema.define(version: 20170514150445) do
   add_index "parts", ["actor_id"], name: "index_parts_on_actor_id", using: :btree
   add_index "parts", ["film_id"], name: "index_parts_on_film_id", using: :btree
 
+=======
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
   create_table "role_users", force: :cascade do |t|
     t.integer  "role_id",    null: false
     t.integer  "user_id",    null: false
@@ -178,12 +188,15 @@ ActiveRecord::Schema.define(version: 20170514150445) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+<<<<<<< HEAD
   add_foreign_key "addresses", "cinemas"
   add_foreign_key "addresses", "films"
   add_foreign_key "exhibits", "collections"
   add_foreign_key "halls", "collections"
   add_foreign_key "parts", "actors"
   add_foreign_key "parts", "films"
+=======
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
   add_foreign_key "role_users", "roles"
   add_foreign_key "role_users", "users"
 end

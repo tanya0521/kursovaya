@@ -1,6 +1,10 @@
 =breadcrumb_tag do
   %li.active
+<<<<<<< HEAD
     = t('app.users.edit')
+=======
+    = t('headers.users.edit')
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
   %li
     = link_to(@user.email, @user)
   %li
@@ -8,7 +12,14 @@
   %li
     Администрирование
     
+<<<<<<< HEAD
 %h1= t('app.users.edit')
 
 = render 'form'
 
+=======
+.page-header
+  %h1= t('headers.users.edit')
+
+= render 'form'
+>>>>>>> 4681a207acfef92ab970235c4f96b4c3944db4e7
