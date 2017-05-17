@@ -11,10 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421125405) do
+ActiveRecord::Schema.define(version: 20170514150445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actors", force: :cascade do |t|
+    t.text     "l_name",     null: false
+    t.text     "f_name",     null: false
+    t.text     "s_name"
+    t.date     "d_birthday", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "cinema_id"
+    t.integer  "film_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "addresses", ["cinema_id"], name: "index_addresses_on_cinema_id", using: :btree
+  add_index "addresses", ["film_id"], name: "index_addresses_on_film_id", using: :btree
+
+  create_table "cinemas", force: :cascade do |t|
+    t.text     "name_c",     null: false
+    t.text     "address_c",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cinemas", ["address_c"], name: "index_cinemas_on_address_c", unique: true, using: :btree
 
   create_table "collections", force: :cascade do |t|
     t.text     "c_name",      null: false
@@ -55,6 +83,17 @@ ActiveRecord::Schema.define(version: 20170421125405) do
 
   add_index "exhibits", ["collection_id"], name: "index_exhibits_on_collection_id", using: :btree
 
+  create_table "films", force: :cascade do |t|
+    t.text     "name_f",      null: false
+    t.text     "genre_f",     null: false
+    t.text     "lasting_f",   null: false
+    t.text     "country_f",   null: false
+    t.text     "companies_f", null: false
+    t.integer  "min_age",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "halls", force: :cascade do |t|
     t.text     "name",          null: false
     t.integer  "collection_id"
@@ -63,6 +102,17 @@ ActiveRecord::Schema.define(version: 20170421125405) do
   end
 
   add_index "halls", ["collection_id"], name: "index_halls_on_collection_id", using: :btree
+
+  create_table "parts", force: :cascade do |t|
+    t.text     "role_a",     null: false
+    t.integer  "film_id",    null: false
+    t.integer  "actor_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "parts", ["actor_id"], name: "index_parts_on_actor_id", using: :btree
+  add_index "parts", ["film_id"], name: "index_parts_on_film_id", using: :btree
 
   create_table "role_users", force: :cascade do |t|
     t.integer  "role_id",    null: false
@@ -107,6 +157,7 @@ ActiveRecord::Schema.define(version: 20170421125405) do
     t.datetime "last_logout_at"
     t.datetime "last_activity_at"
     t.string   "last_login_from_ip_address"
+    t.date     "birthday"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
@@ -127,8 +178,12 @@ ActiveRecord::Schema.define(version: 20170421125405) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+  add_foreign_key "addresses", "cinemas"
+  add_foreign_key "addresses", "films"
   add_foreign_key "exhibits", "collections"
   add_foreign_key "halls", "collections"
+  add_foreign_key "parts", "actors"
+  add_foreign_key "parts", "films"
   add_foreign_key "role_users", "roles"
   add_foreign_key "role_users", "users"
 end
