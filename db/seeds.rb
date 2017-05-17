@@ -23,5 +23,6 @@ for i in 0 ... n do
   h.collection = Collection.all[(0...n).to_a.shuffle[(rand * n).to_i]]
   e = Exhibit.new(e_name: "e_name" + i.to_s, description_e: "description_e" + i.to_s,
     i_value: i, age: i, size: "size" + i.to_s, condition: "condition" + i.to_s)
+  e.collection = Collection.all[(0...n).to_a.shuffle[(rand * n).to_i]]
   h.save; e.save
 end

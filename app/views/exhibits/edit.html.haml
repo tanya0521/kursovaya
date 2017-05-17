@@ -1,7 +1,14 @@
-%h1 Правка экспонатов
+=breadcrumb_tag do
+  %li.active
+    = t('headers.exhibits.edit')
+  %li
+    = link_to(@exhibit.e_name, @exhibit)
+  %li
+    = link_to 'Экспонаты', exhibits_path
+  %li
+    Музеи
 
+.page-header
+  %h1= t('headers.exhibits.edit')
+  
 = render 'form'
-
-= link_to 'Show', @exhibit
-\|
-= link_to 'Back', exhibits_path

@@ -7,4 +7,6 @@ class Exhibit < ActiveRecord::Base
   validates :age, presence: true
   validates :size, presence: true
   validates :condition, presence: true
+
+  accepts_nested_attributes_for :collection, allow_destroy: true
 end

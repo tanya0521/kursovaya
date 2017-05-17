@@ -1,22 +1,42 @@
 = form_for @collection do |f|
-  - if @collection.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@collection.errors.count, "error")} prohibited this collection from being saved:"
-      %ul
-        - @collection.errors.full_messages.each do |msg|
-          %li= msg
+  = error_messages_for @collection
+  .form-actions.bottom20
+    = f.submit nil, class: 'btn btn-primary'
 
-  .field
-    = f.label :c_name
-    = f.text_area :c_name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :date_begin
-    = f.date_select :date_begin
-  .field
-    = f.label :date_end
-    = f.date_select :date_end
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-6
+      .form-group
+        = f.label :c_name
+        = f.text_area :c_name, class: 'form-control', rows: 1
+        = f.error_messages_for(:c_name)
+    .col-md-6
+      .form-group
+        = f.label :description
+        = f.text_area :description, class: 'form-control', rows: 1
+        = f.error_messages_for(:description)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :date_begin
+        .input-group.date.datepicker
+          = f.text_field :date_begin, value: lnil(f.object.date_begin), class: 'form-control'
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:date_begin)
+    .col-md-6
+      .form-group
+        = f.label :date_end
+        .input-group.date.datepicker
+          = f.text_field :date_end, value: lnil(f.object.date_end), class: 'form-control'
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:date_end)
+
+  .row
+    .bottom20.col-md-12
+      = link_to_add_hall(f)
+
+    - i = 0
+    = f.fields_for(:halls) do |fr|
+      = fr.hidden_field(:id)
+      = render('collections/one_hall_form', fr: fr, i: i += 1)

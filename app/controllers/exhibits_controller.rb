@@ -69,6 +69,8 @@ class ExhibitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exhibit_params
-      params.require(:exhibit).permit(:e_name, :description_e, :i_value, :age, :size, :condition, :collection_id)
+      params.require(:exhibit).permit(:e_name, :description_e, :i_value, :age, :size, :condition,
+        :collection_id,
+        {collection_attributes: [:_destroy, :id, :c_name, :description, :date_begin, :date_end]})
     end
 end
