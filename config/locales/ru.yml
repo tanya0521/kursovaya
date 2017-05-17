@@ -4,11 +4,22 @@ ru:
     company:
       short_name: МПУ
       department: Кафедра
+    users:
+      index: Список пользователей
+      new-button: Новый пользователь
+      edit: Редактирование пользователя
+      new: Создание пользователя
+    roles:
+      index: Список возможных ролей пользователей
+      new-button: Новая роль
+      edit: Редактирование роли
+      new: Создание роли
   helpers:
     submit:
       create: Сохранить
       submit: Сохранить
       update: Сохранить
+    sure: Действительно удалить?
   buttons:
     edit: Редактировать
     destroy: Удалить
