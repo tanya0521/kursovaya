@@ -1,5 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  before_action -> {check_app_auth ["admin", "operator"]}
 
   # GET /collections
   # GET /collections.json

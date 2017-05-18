@@ -1,6 +1,7 @@
 class ExhibitsController < ApplicationController
   before_action :set_exhibit, only: [:show, :edit, :update, :destroy]
-
+  before_action -> {check_app_auth ["admin", "operator"]}
+  
   # GET /exhibits
   # GET /exhibits.json
   def index
