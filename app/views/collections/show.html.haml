@@ -1,18 +1,22 @@
-%p#notice= notice
+=breadcrumb_tag do
+  %li.active
+    = @collection.c_name
+  %li
+    = link_to 'Коллекции', collections_path
+  %li
+    Музей
 
-%p
-  %b C name:
-  = @collection.c_name
-%p
-  %b Description:
-  = @collection.description
-%p
-  %b Date begin:
-  = @collection.date_begin
-%p
-  %b Date end:
-  = @collection.date_end
+%h1= @collection.c_name
 
-= link_to 'Edit', edit_collection_path(@collection)
-\|
-= link_to 'Back', collections_path
+%dl
+  %dt= Collection.human_attribute_name(:c_name)
+  %dd= @collection.c_name
+
+  %dt= Collection.human_attribute_name(:description)
+  %dd= @collection.description
+
+  %dt= Collection.human_attribute_name(:date_begin)
+  %dd= @collection.date_begin
+
+  %dt= Collection.human_attribute_name(:date_end)
+  %dd= @collection.date_end

@@ -1,5 +1,12 @@
-%h1 Новая коллекция
+=breadcrumb_tag do
+  %li.active
+    = t('headers.collections.new')
+  %li
+    = link_to 'Коллекции', collections_path
+  %li
+    Музей
+
+.page-header
+  %h1= t('headers.collections.new')
 
 = render 'form'
-
-= link_to 'Back', collections_path
