@@ -3,6 +3,8 @@
   .form-actions.bottom20
     = f.submit nil, class: 'btn btn-primary'
 
+  = f.hidden_field :hall_ids
+
   .row
     .col-md-6
       .form-group
@@ -31,6 +33,23 @@
           %span.input-group-addon
             %span.glyphicon.glyphicon-calendar
         = f.error_messages_for(:date_end)
+
+  .col-md-12
+    #exist-halls
+      %h3 Добавление существующих залов
+      .row
+        .col-md-6
+          = select_tag :halls, options_from_collection_for_select(Hall.all, "id", "name"), class: 'form-control', id: "halls-select"
+        .col-md-6
+          #add-exist-hall.btn.btn-info
+            = fa_icon :plus
+            = t('buttons.add-hall')
+          #remove-exist-hall.btn.btn-danger
+            = fa_icon :times
+            = t('buttons.destroy-hall')
+      .row
+        .col-md-12
+          #list-exist-halls
 
   .row
     .bottom20.col-md-12

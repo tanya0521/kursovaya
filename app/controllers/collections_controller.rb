@@ -70,7 +70,7 @@ class CollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
-      params.require(:collection).permit(:c_name, :description, :date_begin, :date_end, :hall_id,
+      params.require(:collection).permit(:c_name, :description, :date_begin, :date_end, :hall_ids,
         {halls_attributes: [:_destroy, :id, :name]})
     end
 end

@@ -8,4 +8,10 @@ class Collection < ActiveRecord::Base
   validates :date_end, presence: true
 
   accepts_nested_attributes_for :halls, allow_destroy: true
+
+  def hall_ids=(params)
+    params.split.uniq.each do |id|
+      self.halls << Hall.find_by(id: id.to_i)
+    end
+  end
 end
